@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.println(calc(reader.readLine()));
@@ -26,7 +26,107 @@ public class Main {
             throw new Exception("Введено больше двух значений");
         }
 
-        String[] rim = new String[]{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI", "X"};
+        String[] rim = new String[]{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
+        String[] rim2 = new String[]{"I",
+                "II",
+                "III",
+                "IV",
+                "V",
+                "VI",
+                "VII",
+                "VIII",
+                "IX",
+                "X",
+                "XI",
+                "XII",
+                "XIII",
+                "XIV",
+                "XV",
+                "XVI",
+                "XVII",
+                "XVIII",
+                "XIX",
+                "XX",
+                "XXI",
+                "XXII",
+                "XXIII",
+                "XXIV",
+                "XXV",
+                "XXVI",
+                "XXVII",
+                "XXVIII",
+                "XXIX",
+                "XXX",
+                "XXXI",
+                "XXXII",
+                "XXXIII",
+                "XXXIV",
+                "XXXV",
+                "XXXVI",
+                "XXXVII",
+                "XXXVIII",
+                "XXXIX",
+                "XL",
+                "XLI",
+                "XLII",
+                "XLIII",
+                "XLIV",
+                "XLV",
+                "XLVI",
+                "XLVII",
+                "XLVIII",
+                "XLIX",
+                "L",
+                "LI",
+                "LII",
+                "LIII",
+                "LIV",
+                "LV",
+                "LVI",
+                "LVII",
+                "LVIII",
+                "LIX",
+                "LX",
+                "LXI",
+                "LXII",
+                "LXIII",
+                "LXIV",
+                "LXV",
+                "LXVI",
+                "LXVII",
+                "LXVIII",
+                "LXIX",
+                "LXX",
+                "LXXI",
+                "LXXII",
+                "LXXXIII",
+                "LXXIV",
+                "LXXV",
+                "LXXVI",
+                "LXXVII",
+                "LXXVIII",
+                "LXXXIX",
+                "LXXX",
+                "LXXXI",
+                "LXXXII",
+                "LXXXIII",
+                "LXXXIV",
+                "LXXXV",
+                "LXXXVI",
+                "LXXXVII",
+                "LXXVIII",
+                "LXXXIX",
+                "XC",
+                "XCI",
+                "XII",
+                "XIII",
+                "XCIV",
+                "XCV",
+                "XCVI",
+                "XVII",
+                "XCVIII",
+                "ХХIХ",
+                "C"};
 
         for (int i = 0; i < rim.length; i++) {
 
@@ -53,21 +153,34 @@ public class Main {
         if (!(Integer.parseInt(num[0]) > 10) & !(Integer.parseInt(num[2]) > 10)) {
             switch (num[1]) {
                 case "+":
-                    return String.valueOf(Integer.parseInt(num[0]) + Integer.parseInt(num[2]));
-
+                    if (ifRim) {
+                        return rim2[Integer.parseInt(num[0]) + Integer.parseInt(num[2])-1];
+                    } else {
+                        return String.valueOf(Integer.parseInt(num[0]) + Integer.parseInt(num[2]));
+                    }
                 case "-":
                     otvet = Integer.parseInt(num[0]) - Integer.parseInt(num[2]);
-                    if (otvet < 0 & ifRim) {
-                        throw new Exception("Нет римских чисел меньше нуля");
+                    if (ifRim) {
+                        if (otvet < 0) {
+                            throw new Exception("Нет римских чисел меньше нуля");
+                        } else {
+                            return rim2[Integer.parseInt(num[0]) - Integer.parseInt(num[2])-1];
+                        }
+                    } else {
+                        return String.valueOf(Integer.parseInt(num[0]) - Integer.parseInt(num[2]));
                     }
-                    return String.valueOf(Integer.parseInt(num[0]) - Integer.parseInt(num[2]));
-
                 case "*":
-                    return String.valueOf(Integer.parseInt(num[0]) * Integer.parseInt(num[2]));
-
+                    if (ifRim) {
+                        return rim2[Integer.parseInt(num[0]) * Integer.parseInt(num[2])-1];
+                    } else {
+                        return String.valueOf(Integer.parseInt(num[0]) * Integer.parseInt(num[2]));
+                    }
                 case "/":
-                    return String.valueOf(Integer.parseInt(num[0]) / Integer.parseInt(num[2]));
-
+                    if (ifRim) {
+                        return rim2[Integer.parseInt(num[0]) / Integer.parseInt(num[2])-1];
+                    } else {
+                        return String.valueOf(Integer.parseInt(num[0]) / Integer.parseInt(num[2]));
+                    }
                 default:
                     throw new Exception("Введите правильный операнд");
             }
